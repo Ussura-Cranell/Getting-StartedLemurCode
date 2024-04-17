@@ -40,6 +40,7 @@ import java.util.prefs.Preferences;
 
 import com.jme3.app.*;
 import com.jme3.app.state.ScreenshotAppState;
+import com.jme3.asset.plugins.FileLocator;
 import com.jme3.math.ColorRGBA;
 import com.jme3.material.Material;
 import com.jme3.scene.Geometry;
@@ -116,8 +117,10 @@ public class DemoLauncher extends SimpleApplication {
         GuiGlobals globals = GuiGlobals.getInstance();
         BaseStyles.loadGlassStyle();
         globals.getStyles().setDefaultStyle("glass");
- 
-                       
+
+        assetManager.registerLocator("src/main/java/lemur/examples/demos/src/main/resources", FileLocator.class);
+        Texture image = assetManager.loadTexture("test24.png");
+        //System.out.println("test1");
     }
 
 }
