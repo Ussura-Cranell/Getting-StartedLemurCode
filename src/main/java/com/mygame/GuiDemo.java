@@ -62,22 +62,23 @@ public class GuiDemo extends SimpleApplication {
         createBox(0.0f, 0.0f, Offset);
     }
 
-    private void createBox(float x, float y, float z, float scaleX, float scaleY, float scaleZ, Material boxMaterial){
+    private Geometry createBox(float x, float y, float z, float scaleX, float scaleY, float scaleZ, Material boxMaterial){
         Box boxShape = new Box(scaleX, scaleY, scaleZ);
         Geometry boxGeometry = new Geometry("box", boxShape);
         boxGeometry.move(x, y, z);
 
         if (boxMaterial==null){
             boxMaterial = new Material(assetManager, "Common/MatDefs/Misc/Unshaded.j3md");
-            //boxMaterial.setColor("Color", ColorRGBA.Yellow);
             Texture boxTestTexture = assetManager.loadTexture("Textures/test-texture.jpg");
             boxMaterial.setTexture("ColorMap", boxTestTexture);
-            boxGeometry.setMaterial(boxMaterial);
         }
+        boxGeometry.setMaterial(boxMaterial);
+
         rootNode.attachChild(boxGeometry);
+        return boxGeometry;
     }
 
-    private void createBox(float x, float y, float z){
-        this.createBox(x, y, z, 1.0f, 1.0f, 1.0f, null);
+    private Geometry createBox(float x, float y, float z){
+        return this.createBox(x, y, z, 1.0f, 1.0f, 1.0f, null);
     }
 }
